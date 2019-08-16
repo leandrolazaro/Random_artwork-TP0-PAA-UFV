@@ -8,7 +8,11 @@
 
 int main(){
 
-    figure *figure=malloc(4*sizeof(figure));
+    figure **figure=malloc(4*sizeof(*figure));
+
+    for (int i = 0; i < 4; i++){
+        figure[i]=malloc(sizeof(figure));
+    }
 
     // pixel *teste=malloc(sizeof(pixel));
 
@@ -29,13 +33,16 @@ int main(){
     //showPainting(painting);
 
     char fileName[20]="x.txt";
-    initializeFigure(&(figure[0]), fileName);
+    initializeFigure(figure[0], fileName);
 
     strcpy(fileName, "sum.txt");
-    initializeFigure(&(figure[1]), fileName);
+    initializeFigure(figure[1], fileName);
 
     strcpy(fileName, "ponter.txt");
-    initializeFigure(&(figure[2]), fileName);
+    initializeFigure(figure[2], fileName);
+
+    strcpy(fileName, "cabeca.txt");
+    initializeFigure(figure[3], fileName);
 
     //pixel *teste=getPixel(figure[0], 0, 0);
 
@@ -43,11 +50,13 @@ int main(){
 
     //showFigure(figure);
 
-    //paintWithFigure(painting, &(figure[0]), -100);
+    paintWithFigure(painting, figure[1], -100);
 
-    paintWithRandomFigures(painting, figure, 3, -5);
+    //paintWithRandomFigures(painting, figure, 3, -5);
 
     showPainting(painting);
+
+    showFigure(figure[3]);
     
 
     return 0;

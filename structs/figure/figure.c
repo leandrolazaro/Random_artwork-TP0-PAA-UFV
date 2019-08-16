@@ -90,4 +90,5 @@ void showFigure(figure *figure){
         }
         printf("\n");
     }
+    printf("Altura: %d, Largura:%d\n", figure->height, figure->width);
 }

@@ -70,7 +70,7 @@ void paintWithFigure(painting *painting, figure *figure, int frequence){
     }
 
 }
-void paintWithRandomFigures(painting *painting, figure *figure, int quantityFigures, int frequence){
+void paintWithRandomFigures(painting *painting, figure **figure, int quantityFigures, int frequence){
 
     printf("%d\n", painting->width);
     srand(time(NULL));
@@ -96,13 +96,13 @@ void paintWithRandomFigures(painting *painting, figure *figure, int quantityFigu
 
             //printf("%d\n", painting->width);
 
-            if(((painting->width-1)-x)>=figure[randomFigure].width && ((painting->height-1)-y)>=figure[randomFigure].height){
+            if(((painting->width-1)-x)>=figure[randomFigure]->width && ((painting->height-1)-y)>=figure[randomFigure]->height){
                 
-                for(int i=0; i<figure[randomFigure].height;i++){
-                    for(int j=0; j<figure[randomFigure].width;j++){
-                        if(painting->coordinate[y+i][x+j].filled==1 && figure[randomFigure].coordinate[i][j].filled==1){
-                            i=figure[randomFigure].height;
-                            j=figure[randomFigure].width;
+                for(int i=0; i<figure[randomFigure]->height;i++){
+                    for(int j=0; j<figure[randomFigure]->width;j++){
+                        if(painting->coordinate[y+i][x+j].filled==1 && figure[randomFigure]->coordinate[i][j].filled==1){
+                            i=figure[randomFigure]->height;
+                            j=figure[randomFigure]->width;
                             free=0;
                         }
                     }    
@@ -110,10 +110,10 @@ void paintWithRandomFigures(painting *painting, figure *figure, int quantityFigu
 
                 if(free){
                     painted=1;
-                    for(int i=0; i<figure[randomFigure].height;i++){
-                        for(int j=0; j<figure[randomFigure].width;j++){
-                            if((*figure[randomFigure].coordinate[i][j].content)!=' '){
-                                painting->coordinate[y+i][x+j]=figure[randomFigure].coordinate[i][j];
+                    for(int i=0; i<figure[randomFigure]->height;i++){
+                        for(int j=0; j<figure[randomFigure]->width;j++){
+                            if((*figure[randomFigure]->coordinate[i][j].content)!=' '){
+                                painting->coordinate[y+i][x+j]=figure[randomFigure]->coordinate[i][j];
                             }
                         }    
                     }
