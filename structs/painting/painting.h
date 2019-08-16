@@ -17,7 +17,8 @@ typedef struct painting{
 
 void initializePainting(painting *painting, int width, int height);
 void paintWithFigure(painting *painting, figure *figure, int frequence);
-void paintWithRandomFigures(painting *painting, figure **figure, int quantityFigures, int frequence);
+void paintWithRandomFigures(painting *painting, figure **figure, int inferiorLimit, int upperLimit, int frequence);
 void showPainting(painting *painting);
+void clearPainting(painting *painting);
 
 #endif

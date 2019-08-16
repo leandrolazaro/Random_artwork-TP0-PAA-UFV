@@ -26,6 +26,7 @@ void initializePainting(painting *painting, int height, int width){
 }
 
 void paintWithFigure(painting *painting, figure *figure, int frequence){
+    clearPainting(painting);
     srand(time(NULL));
     int painted=0;
     int x=0;
@@ -70,9 +71,9 @@ void paintWithFigure(painting *painting, figure *figure, int frequence){
     }
 
 }
-void paintWithRandomFigures(painting *painting, figure **figure, int quantityFigures, int frequence){
-
-    printf("%d\n", painting->width);
+void paintWithRandomFigures(painting *painting, figure **figure, int inferiorLimit, int upperLimit, int frequence){
+    clearPainting(painting);
+    //printf("%d\n", painting->width);
     srand(time(NULL));
     int painted=0;
     int randomFigure=0;
@@ -85,7 +86,7 @@ void paintWithRandomFigures(painting *painting, figure **figure, int quantityFig
     }
 
     for(int f=0; f<frequence; f++){
-        randomFigure=rand()%((quantityFigures-1)+1-0)+0;
+        randomFigure=rand()%((upperLimit)+1-inferiorLimit)+inferiorLimit;
         
         painted=0;
         while(!painted){
@@ -129,5 +130,14 @@ void showPainting(painting *painting){
             printf("%c", (*painting->coordinate[i][j].content));
         }
         printf("\n");
+    }
+}
+
+void clearPainting(painting *painting){
+    for(int i=1; i<painting->height-1; i++){
+        for(int j=1; j<painting->width-1;j++){
+            painting->coordinate[i][j].filled=0;
+            painting->coordinate[i][j].content=" ";
+        }
     }
 }
