@@ -22,9 +22,9 @@ int main(){
     int option=9;
     int figuresQuantity=0;
 
-    figure **figure=malloc(4*sizeof(*figure));
+    figure **figure=malloc(13*sizeof(*figure));
 
-    for (int i = 0; i < 4; i++){
+    for (int i = 0; i < 13; i++){
         figure[i]=malloc(sizeof(figure));
     }
 
@@ -32,7 +32,7 @@ int main(){
 
     initializePainting(painting, 20, 80);
 
-    char fileName[20]="ponter.txt";
+    char fileName[100]="ponter.txt";
     initializeFigure(figure[0], fileName);
 
     strcpy(fileName, "sum.txt");
@@ -41,8 +41,35 @@ int main(){
     strcpy(fileName, "x.txt");
     initializeFigure(figure[2], fileName);
 
-    strcpy(fileName, "cabeca.txt");
+    strcpy(fileName, "coracao.txt");
     initializeFigure(figure[3], fileName);
+
+    strcpy(fileName, "pcdob.txt");
+    initializeFigure(figure[4], fileName);
+
+    strcpy(fileName, "pco.txt");
+    initializeFigure(figure[5], fileName);
+
+    strcpy(fileName, "psol.txt");
+    initializeFigure(figure[6], fileName);
+
+    strcpy(fileName, "pt.txt");
+    initializeFigure(figure[7], fileName);
+
+    strcpy(fileName, "urss.txt");
+    initializeFigure(figure[8], fileName);
+
+    strcpy(fileName, "ak47.txt");
+    initializeFigure(figure[9], fileName);
+
+    strcpy(fileName, "impostoehroubo.txt");
+    initializeFigure(figure[10], fileName);
+
+    strcpy(fileName, "democraciatbehditadura.txt");
+    initializeFigure(figure[11], fileName);
+
+    strcpy(fileName, "donttreadonme.txt");
+    initializeFigure(figure[12], fileName);
 
 
     while(option!=0){
@@ -131,7 +158,8 @@ int main(){
             setOption(&option, &figuresQuantity);
         }else if (option==5){
             while(paint){
-                paintWithFigure(painting, figure[3], figuresQuantity);
+                paintWithRandomFigures(painting, figure, 9, 12, figuresQuantity);
+                //paintWithFigure(painting, figure[3], figuresQuantity);
                 showPainting(painting);
                 printf("Selecione uma das opcoes:\n");
                 printf("=========================\n");
@@ -140,7 +168,7 @@ int main(){
                 scanf("%d", &paint);
                 printf("\n");
                 if(paint){
-                    paintWithFigure(painting, figure[3], figuresQuantity);
+                    paintWithRandomFigures(painting, figure, 9, 12, figuresQuantity);
                     showPainting(painting);
                 }
             }

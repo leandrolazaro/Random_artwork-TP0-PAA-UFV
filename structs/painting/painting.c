@@ -31,16 +31,17 @@ void paintWithFigure(painting *painting, figure *figure, int frequence){
     int painted=0;
     int x=0;
     int y=0;
+    int tentativas=0;
     if(frequence<1){
         frequence=rand()%(100+1-1)+1;
     }else if(frequence>100){
         frequence=100;
     }
-
-    for(int f=0; f<frequence; f++){
+    
+    for(int f=0; f<frequence && tentativas<10000; f++){
         painted=0;
-        while(!painted){
-
+        while(!painted && tentativas<10000){
+            tentativas++;
             int free=1;
             x=rand()%(((painting->width)-0)+1-1)+1;
             y=rand()%(((painting->height)-0)+1-1)+1;
@@ -57,6 +58,7 @@ void paintWithFigure(painting *painting, figure *figure, int frequence){
                 }
 
                 if(free){
+                    tentativas=0;
                     painted=1;
                     for(int i=0; i<figure->height;i++){
                         for(int j=0; j<figure->width;j++){
@@ -79,18 +81,19 @@ void paintWithRandomFigures(painting *painting, figure **figure, int inferiorLim
     int randomFigure=0;
     int x=0;
     int y=0;
+    int tentativas=0;
     if(frequence<1){
         frequence=rand()%(100+1-1)+1;
     }else if(frequence>100){
         frequence=100;
     }
 
-    for(int f=0; f<frequence; f++){
+    for(int f=0; f<frequence && tentativas<10000; f++){
         randomFigure=rand()%((upperLimit)+1-inferiorLimit)+inferiorLimit;
         
         painted=0;
-        while(!painted){
-            
+        while(!painted&& tentativas<10000){
+            tentativas++;
             int free=1;
             x=rand()%(((painting->width)-0)+1-1)+1;
             y=rand()%(((painting->height)-0)+1-1)+1;
@@ -110,6 +113,7 @@ void paintWithRandomFigures(painting *painting, figure **figure, int inferiorLim
                 }
 
                 if(free){
+                    tentativas=0;
                     painted=1;
                     for(int i=0; i<figure[randomFigure]->height;i++){
                         for(int j=0; j<figure[randomFigure]->width;j++){
